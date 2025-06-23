@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قهوجي وصبابين الطائف الباحة - خدمات القهوة العربية الأصيلة</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            line-height: 1.8;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(210, 105, 30, 0.9) 50%, rgba(205, 133, 63, 0.85) 100%),
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4uSLixYxuuKZ0BMnJF8M1dEfDl-5aSM1BQmBFNKqw1QTOBXXVwq3HrymeQ5n6SLTy6SpRrxyQPkYD-EH7LBM4lS94zCY4NMN4tINxCh2fAG-ELPUyUxobUMAm1brqa0NjY_z2_hHpzYOSzE4nKEkIagr6jvqvqwQEmZ7WUBogHUfFUy6sHejwUlnvn_d6/s1600/IMG-20250619-WA0033.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-shadow {
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.15);
+            transition: all 0.3s ease;
+        }
+        .text-coffee {
+            color: #8B4513;
+        }
+        .bg-coffee {
+            background-color: #8B4513;
+        }
+        .bg-coffee-light {
+            background-color: #D2691E;
+        }
+        .border-coffee {
+            border-color: #8B4513;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
+        }
+        .amiri {
+            font-family: 'Amiri', serif;
+        }
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 60px;
+            padding: 18px 25px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            animation: pulse 3s infinite;
+            backdrop-filter: blur(10px);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            aspect-ratio: 16/10;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-5px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8B4513, transparent);
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+            .image-container {
+                aspect-ratio: 4/3;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- زر الواتساب الثابت -->
+    <a href="https://wa.me/966507712688" target="_blank" class="whatsapp-btn flex items-center hover-lift">
+        <i class="fab fa-whatsapp text-2xl ml-2"></i>
+        <span class="font-semibold">تواصل معنا</span>
+    </a>
+
+    <!-- القسم الرئيسي -->
+    <header class="hero-bg text-white py-20 min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold amiri mb-6 leading-tight">قهوجي وصبابين<br>الطائف الباحة</h1>
+                <div class="section-divider w-32 mx-auto bg-white opacity-75"></div>
+                <p class="text-xl md:text-3xl mb-8 opacity-95 font-light">فن الضيافة العربية الأصيلة</p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 md:space-x-reverse text-lg bg-black bg-opacity-20 backdrop-blur-sm rounded-2xl p-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt ml-3 text-yellow-300"></i>
+                        <span>الباحة - الطائف - المملكة العربية السعودية</span>
+                    </div>
+                    <div class="hidden md:block text-yellow-300">|</div>
+                    <div class="flex items-center">
+                        <i class="fas fa-phone ml-3 text-yellow-300"></i>
+                        <span dir="ltr">+966507712688</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- معرض الأعمال -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 amiri">معرض أعمالنا</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">نفخر بتقديم أجود أنواع القهوة العربية الأصيلة بأسلوب احترافي يعكس عراقة التراث العربي</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+                <div class="image-container card-shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4uSLixYxuuKZ0BMnJF8M1dEfDl-5aSM1BQmBFNKqw1QTOBXXVwq3HrymeQ5n6SLTy6SpRrxyQPkYD-EH7LBM4lS94zCY4NMN4tINxCh2fAG-ELPUyUxobUMAm1brqa0NjY_z2_hHpzYOSzE4nKEkIagr6jvqvqwQEmZ7WUBogHUfFUy6sHejwUlnvn_d6/s1600/IMG-20250619-WA0033.jpg" alt="خدمة القهوة العربية الأصيلة">
+                    <div class="image-overlay">
+                        <span>خدمة القهوة العربية الأصيلة</span>
+                    </div>
+                </div>
+                <div class="image-container card-shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTqIN86Q5Qf7HL8MKU5AhSIADfERrzu2-pEIVeAI0Rf9sywXFL39dhWrvppcfZX6GkfrmYOt45munbWyD1zDzOkZnyp1_4yFY4cHMcadky6Xvt1IpuAN02Y5bjPIUH_kV4MFzC7L6ObNho8xViVyRv2bnvNNXl3SUBCCIQ506cSsmA6KysheJDIX-w9Sx4/s1280/IMG-20250619-WA0029.jpg" alt="تحضير القهوة بالطريقة التراثية">
+                    <div class="image-overlay">
+                        <span>تحضير القهوة بالطريقة التراثية</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="image-container card-shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjig4Citk_WSoxmsw-3O5V4xLk0hpJdZGOS5vgJaVs4vYMMQgTvU89JmuDxnIVKyRlcw35S8LD3blPPWmYQoaY9SqrEmWnojpfwPQTe1yRJXDV_2zDPKdAdTZxY6zt85rZxQ_ZaCQu46Jx3Jabr63VSOAYSXsHGz7D12phnhxzMvpChZS_SSZq0-wqggwSk/s3840/IMG-20250619-WA0032.jpg" alt="خدمة احترافية للمناسبات">
+                    <div class="image-overlay">
+                        <span>خدمة احترافية للمناسبات</span>
+                    </div>
+                </div>
+                <div class="image-container card-shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi98Y5ZVoPMXdwMpaXgvbHEqrKmcEzq_6KS8opi6-oc6uqlyOuMhPX2-Lc24z1m1LH2SQKy0nKNsUJ-pjVQ2JJQ3Xhr3xJyXXBWt8LQ756dUV7PzZo02m_-Jgb0fu4YgrZtInp-C4ee1s3F359DN99ByJQe_YtpOiHfpyStS66_F4rXBXW2pSnoOrMVCHM/s1600/IMG-20250619-WA0030.jpg" alt="تقديم القهوة بأسلوب عربي راقي">
+                    <div class="image-overlay">
+                        <span>تقديم القهوة بأسلوب عربي راقي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 amiri">من نحن</h2>
+                    <div class="section-divider w-24 mx-auto"></div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 md:p-12 card-shadow service-card">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-coffee mb-6 amiri">قهوجي وصياب - رمز الأصالة والجودة</h3>
+                            <p class="text-gray-700 mb-6 leading-relaxed">
+                                نحن متخصصون في فن الضيافة العربية الأصيلة منذ سنوات، نقدم خدمات القهوة العربية بأعلى معايير الجودة والاحترافية.
+                            </p>
+                            <p class="text-gray-700 mb-6 leading-relaxed">
+                                فريقنا المدرب على أعلى مستوى يضمن تجربة ضيافة فريدة تجمع بين التراث العريق والأناقة الحديثة.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-coffee mb-6 amiri">رؤيتنا ورسالتنا</h3>
+                            <p class="text-gray-700 mb-6 leading-relaxed">
+                                نهدف إلى إحياء التراث العربي الأصيل وجعل كل رشفة قهوة تحمل في طياتها عبق التاريخ وأصالة الماضي.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                نسعى لتقديم خدمات مخصصة تناسب جميع المناسبات وتتجاوز توقعات عملائنا الكرام.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 amiri">خدماتنا المميزة</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">نقدم مجموعة شاملة من خدمات القهوة العربية لجميع المناسبات والفعاليات</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="text-center mb-8">
+                        <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-home text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-coffee amiri">المناسبات العائلية</h3>
+                    </div>
+                    <ul class="text-gray-700 space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">حفلات الزفاف والخطوبة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">العزائم والولائم العائلية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">المناسبات الدينية والاجتماعية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">خدمة تقديم بالزي التراثي</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="text-center mb-8">
+                        <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-building text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-coffee amiri">الشركات والمؤسسات</h3>
+                    </div>
+                    <ul class="text-gray-700 space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">المؤتمرات والاجتماعات</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">المعارض والفعاليات التجارية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">الخدمة اليومية للمكاتب</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">تدريب فرق العمل</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="text-center mb-8">
+                        <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-star text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-coffee amiri">المناسبات الخاصة</h3>
+                    </div>
+                    <ul class="text-gray-700 space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">الفنادق والمنتجعات</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">خدمة VIP للشخصيات</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">المهرجانات الثقافية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-coffee ml-3 mt-1 text-lg"></i>
+                            <span class="leading-relaxed">المناسبات الرسمية</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 amiri">مميزاتنا</h2>
+                <div class="section-divider w-24 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center hover-lift bg-white rounded-2xl p-8 card-shadow service-card">
+                    <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-coffee mb-4 amiri">جودة عالية</h3>
+                    <p class="text-gray-600 leading-relaxed">قهوة عربية أصيلة من أجود أنواع البن المحمص بعناية</p>
+                </div>
+                
+                <div class="text-center hover-lift bg-white rounded-2xl p-8 card-shadow service-card">
+                    <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-coffee mb-4 amiri">فريق محترف</h3>
+                    <p class="text-gray-600 leading-relaxed">مدربون على أعلى معايير الضيافة العربية الأصيلة</p>
+                </div>
+                
+                <div class="text-center hover-lift bg-white rounded-2xl p-8 card-shadow service-card">
+                    <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-coffee mb-4 amiri">خدمة سريعة</h3>
+                    <p class="text-gray-600 leading-relaxed">التزام بالمواعيد واستجابة فورية لجميع الطلبات</p>
+                </div>
+                
+                <div class="text-center hover-lift bg-white rounded-2xl p-8 card-shadow service-card">
+                    <div class="bg-gradient-to-br from-coffee to-coffee-light text-white w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-coffee mb-4 amiri">ضيافة أصيلة</h3>
+                    <p class="text-gray-600 leading-relaxed">نحافظ على التراث العربي في كل التفاصيل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم آراء العملاء -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 amiri">آراء عملائنا</h2>
+                <p class="text-gray-600 text-lg">تجارب حقيقية من عملائنا الكرام</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-coffee to-coffee-light text-white rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-300 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-lg mb-6 leading-relaxed">"خدمة ممتازة وقهوة رائعة. أضافوا لمسة تراثية جميلة لحفل زفاف ابنتي."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold">راشد أحمد</p>
+                            <p class="text-sm opacity-75">الرياض</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-coffee to-coffee-light text-white rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-300 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-lg mb-6 leading-relaxed">"احترافية عالية والتزام بالمواعيد. نتعامل معهم دائماً في مؤتمراتنا."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-building text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold">مدير الفعاليات</p>
+                            <p class="text-sm opacity-75">شركة النخيل</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-coffee to-coffee-light text-white rounded-3xl p-8 card-shadow hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-300 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-lg mb-6 leading-relaxed">"أفضل خدمة قهوة في المنطقة. الطعم أصيل والتقديم راقي جداً."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold">خالد العتيبي</p>
+                            <p class="text-sm opacity-75">جدة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الدعوة للعمل -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-12 card-shadow service-card">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-6 amiri">اجعل مناسبتك مميزة معنا</h2>
+                <div class="section-divider w-32 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-700 leading-relaxed mb-8">
+                    نحن فخورون بكوننا شركاءكم في صنع لحظات جميلة من الضيافة العربية الأصيلة
+                </p>
+                <div class="bg-gradient-to-r from-coffee to-coffee-light text-white rounded-2xl p-8 mb-8">
+                    <p class="text-2xl font-bold amiri">
+                        "في قهوجي وصبابين الطائف الباحة... نصنع من كل رشفة قهوة ذكرى لا تُنسى"
+                    </p>
+                </div>
+                <a href="https://wa.me/966507712688" target="_blank" class="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <i class="fab fa-whatsapp text-2xl ml-3"></i>
+                    احجز خدمتك الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="hero-bg text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-right">
+                <div>
+                    <h3 class="text-3xl font-bold amiri mb-4">قهوجي وصبابين الطائف الباحة</h3>
+                    <p class="opacity-90 text-lg">فن الضيافة العربية الأصيلة</p>
+                    <div class="flex justify-center md:justify-start space-x-4 space-x-reverse mt-6">
+                        <a href="https://wa.me/966507712688" class="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                        <a href="tel:+966507712688" class="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-phone text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-semibold mb-6 amiri">تواصل معنا</h4>
+                    <div class="space-y-4">
+                        <p class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-phone ml-3 text-yellow-300"></i>
+                            <span dir="ltr">+966507712688</span>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start">
+                            <i class="fab fa-whatsapp ml-3 text-yellow-300"></i>
+                            <span>واتساب: +966507712688</span>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-map-marker-alt ml-3 text-yellow-300"></i>
+                            <span>الباحة - الطائف - المملكة العربية السعودية</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-semibold mb-6 amiri">ساعات العمل</h4>
+                    <div class="space-y-3 opacity-90">
+                        <p class="font-semibold">السبت - الخميس</p>
+                        <p>من 8:00 صباحاً إلى 10:00 مساءً</p>
+                        <p class="text-yellow-300 font-semibold">متاحون 24/7 للطوارئ</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 mt-12 pt-8 text-center">
+                <p class="opacity-75 text-lg">© 2024 قهوجي وصبابين الطائف الباحة - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تأثير تفاعلي للصور - فتح الصور في نافذة جديدة
+        document.querySelectorAll('.image-container img').forEach(img => {
+            img.addEventListener('click', function() {
+                window.open(this.src, '_blank');
+            });
+        });
+
+        // تأثير تمرير سلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // تأثير الظهور عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // تطبيق التأثير على العناصر
+        document.querySelectorAll('.service-card, .image-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // تحسين أداء الصور الكسولة
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        }
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDjh2XNWyttSRU3JtBdO15W0zAGxAmqNZ6RV5OVckZRjL1qFZvF6j%2F3R7MJ%2FsNiGHH7EJ4GeMtEXauRdMG5D9iAeU2K3Hu2DzC%2Fv1XD019f%2BUy0GRHIaGL8HtV42dbzxOjH%2FDraTrcyCQaeTp0BiowbGflxUVeAqB9F1%2F59%2F0Tx6ko9OL2cFqvUimqvFOvizw%2F%2B7EuTbw3P44AcPgS8JVoqVVOhQH325LLbujmkz5DkS317WQ8cM0k7bibUWYd4rXm70SccRmrla4KzXZY3wXm9Y00HpyPwdgz7CWsttj2lpqwIp9w5R9dfqRLHzOeo3U88emTJ%2F7g0GiMpzKMvgOpNRodphH8lGcTtaD33pcvXOJlaiykXgSzOHpNYm59yODuDN%2Flp%2Bvcq6wwlZKw07ef81p1LsLNklTRCNqjqQ6qcKtOhdZXL3xn8Ujp4xV7yh4Xgk04LdnvdjEg41knrMhUuPbBi2dh3WP0u6wg1LtfwTq1GEi2F7FEL%2FnBXZYiCZ6gVhJJhdIj%2BVlUl2TqB4Sop4%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDjh2XNWyttSRU3JtBdO15W0zAGxAmqNZ6RV5OVckZRjL1qFZvF6j/3R7MJ/sNiGHH7EJ4GeMtEXauRdMG5D9iAeU2K3Hu2DzC/v1XD019f+Uy0GRHIaGL8HtV42dbzxOjH/DraTrcyCQaeTp0BiowbGflxUVeAqB9F1/59/0Tx6ko9OL2cFqvUimqvFOvizw/+7EuTbw3P44AcPgS8JVoqVVOhQH325LLbujmkz5DkS317WQ8cM0k7bibUWYd4rXm70SccRmrla4KzXZY3wXm9Y00HpyPwdgz7CWsttj2lpqwIp9w5R9dfqRLHzOeo3U88emTJ/7g0GiMpzKMvgOpNRodphH8lGcTtaD33pcvXOJlaiykXgSzOHpNYm59yODuDN/lp+vcq6wwlZKw07ef81p1LsLNklTRCNqjqQ6qcKtOhdZXL3xn8Ujp4xV7yh4Xgk04LdnvdjEg41knrMhUuPbBi2dh3WP0u6wg1LtfwTq1GEi2F7FEL/nBXZYiCZ6gVhJJhdIj+VlUl2TqB4Sop4=";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
