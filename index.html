@@ -3,492 +3,873 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8B4513">
+    <meta name="description" content="قهوجي وصبابين الطائف الباحة - خدمات القهوة العربية الأصيلة للمناسبات والفعاليات">
     <title>قهوجي وصبابين الطائف الباحة - خدمات القهوة العربية الأصيلة</title>
+    
+    <!-- تحسين التحميل السريع -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- مكتبات CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
     <style>
+        :root {
+            --coffee-primary: #8B4513;
+            --coffee-secondary: #D2691E;
+            --coffee-light: #CD853F;
+            --coffee-dark: #5D2F0C;
+            --gold: #FFD700;
+            --bg-light: #FEFEFE;
+            --bg-secondary: #F8F9FA;
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --shadow-light: rgba(139, 69, 19, 0.1);
+            --shadow-medium: rgba(139, 69, 19, 0.2);
+            --shadow-dark: rgba(139, 69, 19, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 2rem;
+            --border-radius-lg: 3rem;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #f8f6f3 0%, #ede8e0 100%);
-            line-height: 1.8;
+            line-height: 1.7;
+            background: var(--bg-light);
+            color: var(--text-primary);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+
+        /* تحسينات الأداء والتحميل */
+        .lazy-load {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* قسم البطل المحسن للجوال */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--coffee-primary) 0%, var(--coffee-secondary) 50%, var(--coffee-light) 100%);
             position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
         }
-        
-        .hero-bg::before {
+
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px;
+            animation: float 20s infinite linear;
         }
-        
-        .hero-bg > * {
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -30px); }
+        }
+
+        .hero-content {
             position: relative;
             z-index: 2;
-        }
-        
-        .card-shadow {
-            box-shadow: 0 25px 50px rgba(139, 69, 19, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .text-coffee {
-            color: #8B4513;
-        }
-        
-        .bg-coffee {
-            background-color: #8B4513;
-        }
-        
-        .bg-coffee-light {
-            background-color: #D2691E;
-        }
-        
-        .border-coffee {
-            border-color: #8B4513;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .amiri {
-            font-family: 'Amiri', serif;
-        }
-        
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #25D366 0%, #20C759 100%);
+            text-align: center;
             color: white;
-            border-radius: 60px;
-            padding: 18px 28px;
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-            animation: pulseWhatsApp 3s infinite;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
         }
-        
-        @keyframes pulseWhatsApp {
-            0%, 100% { 
-                transform: scale(1); 
-                box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-            }
-            50% { 
-                transform: scale(1.05); 
-                box-shadow: 0 18px 40px rgba(37, 211, 102, 0.6);
-            }
+
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+            line-height: 1.2;
         }
-        
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.7);
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
         }
-        
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            padding: 40px 0;
-            max-width: 1200px;
-            margin: 0 auto;
+
+        .hero-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-        
-        .gallery-image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 25px;
-            aspect-ratio: 4/3;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 4px solid rgba(139, 69, 19, 0.1);
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            font-size: clamp(1rem, 3vw, 1.2rem);
         }
-        
-        .gallery-image-container:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.4);
-            border-color: rgba(139, 69, 19, 0.3);
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
         }
-        
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+
+        .info-card i {
+            font-size: 1.5em;
+            flex-shrink: 0;
         }
-        
-        .gallery-image-container:hover .gallery-image {
-            transform: scale(1.15);
-        }
-        
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.9));
-            opacity: 0;
-            transition: opacity 0.5s ease;
+
+        /* الواتساب المحسن للجوال */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #20C759 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            font-size: 1.3rem;
-            text-align: center;
-            padding: 20px;
-            backdrop-filter: blur(5px);
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            animation: pulse-whatsapp 3s infinite;
+            transition: var(--transition);
+            border: 3px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .gallery-image-container:hover .image-overlay {
-            opacity: 1;
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
         }
-        
-        .service-card {
+
+        .whatsapp-fab i {
+            font-size: 24px;
+        }
+
+        @keyframes pulse-whatsapp {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+        /* شريط التنقل المحسن للجوال */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(139, 69, 19, 0.1);
-            transition: all 0.5s ease;
-            position: relative;
+            border-top: 1px solid var(--shadow-light);
+            z-index: 999;
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            border-radius: 1rem;
+            min-width: 50px;
+        }
+
+        .nav-item.active,
+        .nav-item:hover {
+            color: var(--coffee-primary);
+            background: var(--shadow-light);
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+        }
+
+        /* البطاقات المحسنة */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--shadow-light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px var(--shadow-light);
+            transition: var(--transition);
             overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.05), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-        
-        .service-card:hover::before {
-            opacity: 1;
-            animation: shine 0.6s ease-in-out;
-        }
-        
-        .service-card:hover {
-            background: rgba(255, 255, 255, 1);
-            border-color: rgba(139, 69, 19, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2691E 100%);
-            color: white;
-            border-radius: 25px;
-            padding: 35px;
-            margin: 20px 0;
-            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .testimonial-card::before {
+
+        .glass-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: left 0.6s ease;
         }
-        
-        .testimonial-card:hover::before {
+
+        .glass-card:hover::before {
             left: 100%;
         }
-        
-        .testimonial-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.4);
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px var(--shadow-medium);
         }
-        
-        .testimonial-stars {
-            color: #FFD700;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
+
+        /* معرض الصور المحسن للجوال */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1rem 0;
         }
-        
-        .testimonial-text {
-            font-size: 1.2rem;
-            line-height: 2;
-            margin-bottom: 25px;
-            font-style: italic;
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        .gallery-item {
             position: relative;
-            z-index: 2;
-            text-align: center;
+            aspect-ratio: 4/3;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px var(--shadow-light);
         }
-        
-        .testimonial-text::before,
-        .testimonial-text::after {
-            content: '"';
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px var(--shadow-medium);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
             position: absolute;
-            font-family: serif;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.8));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
         }
-        
-        .testimonial-text::before {
-            top: -10px;
-            right: -10px;
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
-        
-        .testimonial-text::after {
-            bottom: -40px;
-            left: -10px;
+
+        /* الخدمات المحسنة */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
-        
-        .testimonial-author {
+
+        @media (min-width: 768px) {
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .service-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px var(--shadow-medium);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
             font-weight: 700;
+            color: var(--coffee-primary);
+            margin-bottom: 1rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .service-list {
+            list-style: none;
+            text-align: right;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .service-list li i {
+            color: var(--coffee-primary);
+            margin-left: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* التقييمات المحسنة */
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                min-width: 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonial-slide {
+                min-width: 33.333%;
+            }
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
             font-size: 1.1rem;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
-        
-        .testimonials-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 100px 0;
-            position: relative;
+
+        .testimonial-author {
+            font-weight: 600;
+            opacity: 0.9;
         }
-        
+
+        /* أقسام محسنة */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 2rem;
+            }
+        }
+
         .section-title {
-            font-size: 4rem;
+            font-family: 'Amiri', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            color: #8B4513;
+            color: var(--coffee-primary);
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 3rem;
             position: relative;
-            text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 6px;
-            background: linear-gradient(90deg, #8B4513, #D2691E);
-            border-radius: 3px;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--coffee-primary), var(--coffee-secondary));
+            border-radius: 2px;
         }
-        
+
         .section-title::before {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -0.7rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: #FFD700;
-            border-radius: 2px;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 1px;
         }
-        
+
+        /* المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
         .feature-icon {
-            transition: all 0.5s ease;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
         }
-        
+
         .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
         }
-        
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--coffee-primary);
+            margin-bottom: 0.75rem;
         }
-        
-        .floating-coffee {
-            position: absolute;
-            color: rgba(139, 69, 19, 0.1);
-            animation: float 6s ease-in-out infinite;
+
+        .feature-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
-        
-        .floating-coffee:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .floating-coffee:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
-        .floating-coffee:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s; }
-        .floating-coffee:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 1s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+
+        /* التذييل المحسن */
+        .footer {
+            background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-secondary));
+            color: white;
+            padding: 3rem 1rem 8rem;
+            position: relative;
         }
-        
-        @media (max-width: 768px) {
-            .whatsapp-btn {
-                bottom: 20px;
-                left: 20px;
-                padding: 15px 20px;
-                font-size: 1rem;
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: right;
             }
             
-            .image-gallery {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                padding: 30px 0;
+            .footer {
+                padding-bottom: 3rem;
+            }
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+            margin-bottom: 1rem;
+        }
+
+        .footer-subtitle {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .contact-item {
+                justify-content: flex-start;
+            }
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hours-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #10B981;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* تحسينات إضافية للجوال */
+        @media (max-width: 767px) {
+            .hero-info {
+                padding: 0 1rem;
             }
             
-            .section-title {
-                font-size: 2.5rem;
+            .info-card {
+                font-size: 0.95rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .glass-card {
+                margin: 0 0.5rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem 1rem;
             }
             
             .testimonial-card {
-                margin: 15px 0;
-                padding: 25px;
+                padding: 1.5rem;
             }
             
-            .testimonial-text {
-                font-size: 1.1rem;
-            }
-            
-            .hero-bg h1 {
-                font-size: 3rem !important;
-            }
-            
-            .hero-bg p {
-                font-size: 1.5rem !important;
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
             }
         }
-        
+
+        /* لودر مخصص */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--coffee-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .coffee-loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* تحسينات الأداء */
+        .will-change-transform {
+            will-change: transform;
+        }
+
+        .gpu-accelerated {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* طباعة */
         @media print {
-            .whatsapp-btn { display: none !important; }
-            body { background: white !important; }
-            .hero-bg { background: #8B4513 !important; }
-            .card-shadow { box-shadow: none !important; }
-            .floating-elements { display: none !important; }
+            .whatsapp-fab,
+            .mobile-nav,
+            .page-loader {
+                display: none !important;
+            }
+            
+            .hero-section {
+                background: var(--coffee-primary) !important;
+                color: white !important;
+            }
+            
+            .glass-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
         }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
+
+        /* تحسينات الوصول */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .feature-card {
-            transition: all 0.4s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
+
+        /* الوضع المظلم للنظام */
+        @media (prefers-color-scheme: dark) {
+            .mobile-nav {
+                background: rgba(0, 0, 0, 0.9);
+                border-top-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-item {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            .nav-item.active,
+            .nav-item:hover {
+                color: var(--coffee-light);
+                background: rgba(139, 69, 19, 0.2);
+            }
         }
     </style>
 </head>
-<body class="min-h-screen smooth-scroll">
-    <!-- زر الواتساب الثابت المحسن -->
-    <a href="https://wa.me/966507712688" target="_blank" class="whatsapp-btn flex items-center">
-        <i class="fab fa-whatsapp text-2xl ml-2"></i>
-        <span>تواصل معنا</span>
-    </a>
-
-    <!-- العناصر الطائفة للخلفية -->
-    <div class="floating-elements">
-        <i class="floating-coffee fas fa-coffee text-6xl"></i>
-        <i class="floating-coffee fas fa-coffee text-4xl"></i>
-        <i class="floating-coffee fas fa-coffee text-5xl"></i>
-        <i class="floating-coffee fas fa-coffee text-3xl"></i>
+<body>
+    <!-- لودر الصفحة -->
+    <div class="page-loader" id="pageLoader">
+        <div class="coffee-loader"></div>
     </div>
 
-    <!-- القسم الرئيسي المحسن -->
-    <header class="hero-bg text-white py-24">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-7xl md:text-8xl font-bold amiri mb-8 text-shadow-lg">قهوجي وصبابين الطائف الباحة</h1>
-            <p class="text-3xl md:text-4xl mb-16 opacity-95 font-medium">فن الضيافة العربية الأصيلة منذ القدم</p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12 md:space-x-reverse text-xl">
-                <div class="flex items-center bg-white bg-opacity-20 backdrop-blur-md rounded-full px-8 py-4">
-                    <i class="fas fa-map-marker-alt ml-4 text-3xl text-yellow-300"></i>
-                    <span class="font-semibold">الباحة - الطائف - المملكة العربية السعودية</span>
-                </div>
-                <div class="flex items-center bg-white bg-opacity-20 backdrop-blur-md rounded-full px-8 py-4">
-                    <i class="fas fa-phone ml-4 text-3xl text-green-300"></i>
-                    <span class="font-semibold">+966507712688</span>
+    <!-- زر الواتساب المحسن -->
+    <a href="https://wa.me/966507712688" target="_blank" class="whatsapp-fab" aria-label="تواصل معنا عبر الواتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- شريط التنقل للجوال -->
+    <nav class="mobile-nav">
+        <a href="#home" class="nav-item active" data-section="home">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="#gallery" class="nav-item" data-section="gallery">
+            <i class="fas fa-images"></i>
+            <span>المعرض</span>
+        </a>
+        <a href="#services" class="nav-item" data-section="services">
+            <i class="fas fa-coffee"></i>
+            <span>الخدمات</span>
+        </a>
+        <a href="#contact" class="nav-item" data-section="contact">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+        </a>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-4">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="hero-title">قهوجي وصبابين الطائف الباحة</h1>
+                <p class="hero-subtitle">فن الضيافة العربية الأصيلة منذ القدم</p>
+                
+                <div class="hero-info">
+                    <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-map-marker-alt text-yellow-300"></i>
+                        <span>الباحة - الطائف - المملكة العربية السعودية</span>
+                    </div>
+                    <div class="info-card" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-phone text-green-300"></i>
+                        <span>+966507712688</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- معرض الصور المحسن -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title amiri">معرض أعمالنا المميزة</h2>
-            <div class="image-gallery">
-                <div class="gallery-image-container card-shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4uSLixYxuuKZ0BMnJF8M1dEfDl-5aSM1BQmBFNKqw1QTOBXXVwq3HrymeQ5n6SLTy6SpRrxyQPkYD-EH7LBM4lS94zCY4NMN4tINxCh2fAG-ELPUyUxobUMAm1brqa0NjY_z2_hHpzYOSzE4nKEkIagr6jvqvqwQEmZ7WUBogHUfFUy6sHejwUlnvn_d6/s1600/IMG-20250619-WA0033.jpg" alt="خدمة القهوة العربية الأصيلة" class="gallery-image">
-                    <div class="image-overlay">
+    <!-- معرض الصور -->
+    <section id="gallery" class="section bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">معرض أعمالنا المميزة</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4uSLixYxuuKZ0BMnJF8M1dEfDl-5aSM1BQmBFNKqw1QTOBXXVwq3HrymeQ5n6SLTy6SpRrxyQPkYD-EH7LBM4lS94zCY4NMN4tINxCh2fAG-ELPUyUxobUMAm1brqa0NjY_z2_hHpzYOSzE4nKEkIagr6jvqvqwQEmZ7WUBogHUfFUy6sHejwUlnvn_d6/s1600/IMG-20250619-WA0033.jpg" 
+                         alt="خدمة القهوة العربية الأصيلة" loading="lazy">
+                    <div class="gallery-overlay">
                         <div>
-                            <i class="fas fa-coffee text-4xl mb-3"></i>
+                            <i class="fas fa-coffee text-3xl mb-2"></i>
                             <p>خدمة القهوة العربية الأصيلة</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-image-container card-shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTqIN86Q5Qf7HL8MKU5AhSIADfERrzu2-pEIVeAI0Rf9sywXFL39dhWrvppcfZX6GkfrmYOt45munbWyD1zDzOkZnyp1_4yFY4cHMcadky6Xvt1IpuAN02Y5bjPIUH_kV4MFzC7L6ObNho8xViVyRv2bnvNNXl3SUBCCIQ506cSsmA6KysheJDIX-w9Sx4/s1280/IMG-20250619-WA0029.jpg" alt="تحضير القهوة بالطريقة التراثية" class="gallery-image">
-                    <div class="image-overlay">
+                
+                <div class="gallery-item glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTqIN86Q5Qf7HL8MKU5AhSIADfERrzu2-pEIVeAI0Rf9sywXFL39dhWrvppcfZX6GkfrmYOt45munbWyD1zDzOkZnyp1_4yFY4cHMcadky6Xvt1IpuAN02Y5bjPIUH_kV4MFzC7L6ObNho8xViVyRv2bnvNNXl3SUBCCIQ506cSsmA6KysheJDIX-w9Sx4/s1280/IMG-20250619-WA0029.jpg" 
+                         alt="تحضير القهوة بالطريقة التراثية" loading="lazy">
+                    <div class="gallery-overlay">
                         <div>
-                            <i class="fas fa-fire text-4xl mb-3"></i>
+                            <i class="fas fa-fire text-3xl mb-2"></i>
                             <p>تحضير القهوة بالطريقة التراثية</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-image-container card-shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjig4Citk_WSoxmsw-3O5V4xLk0hpJdZGOS5vgJaVs4vYMMQgTvU89JmuDxnIVKyRlcw35S8LD3blPPWmYQoaY9SqrEmWnojpfwPQTe1yRJXDV_2zDPKdAdTZxY6zt85rZxQ_ZaCQu46Jx3Jabr63VSOAYSXsHGz7D12phnhxzMvpChZS_SSZq0-wqggwSk/s3840/IMG-20250619-WA0032.jpg" alt="خدمة احترافية للمناسبات" class="gallery-image">
-                    <div class="image-overlay">
+                
+                <div class="gallery-item glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjig4Citk_WSoxmsw-3O5V4xLk0hpJdZGOS5vgJaVs4vYMMQgTvU89JmuDxnIVKyRlcw35S8LD3blPPWmYQoaY9SqrEmWnojpfwPQTe1yRJXDV_2zDPKdAdTZxY6zt85rZxQ_ZaCQu46Jx3Jabr63VSOAYSXsHGz7D12phnhxzMvpChZS_SSZq0-wqggwSk/s3840/IMG-20250619-WA0032.jpg" 
+                         alt="خدمة احترافية للمناسبات" loading="lazy">
+                    <div class="gallery-overlay">
                         <div>
-                            <i class="fas fa-users text-4xl mb-3"></i>
+                            <i class="fas fa-users text-3xl mb-2"></i>
                             <p>خدمة احترافية للمناسبات</p>
                         </div>
                     </div>
                 </div>
-                <div class="gallery-image-container card-shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi98Y5ZVoPMXdwMpaXgvbHEqrKmcEzq_6KS8opi6-oc6uqlyOuMhPX2-Lc24z1m1LH2SQKy0nKNsUJ-pjVQ2JJQ3Xhr3xJyXXBWt8LQ756dUV7PzZo02m_-Jgb0fu4YgrZtInp-C4ee1s3F359DN99ByJQe_YtpOiHfpyStS66_F4rXBXW2pSnoOrMVCHM/s1600/IMG-20250619-WA0030.jpg" alt="تقديم القهوة بأسلوب عربي راقي" class="gallery-image">
-                    <div class="image-overlay">
+                
+                <div class="gallery-item glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi98Y5ZVoPMXdwMpaXgvbHEqrKmcEzq_6KS8opi6-oc6uqlyOuMhPX2-Lc24z1m1LH2SQKy0nKNsUJ-pjVQ2JJQ3Xhr3xJyXXBWt8LQ756dUV7PzZo02m_-Jgb0fu4YgrZtInp-C4ee1s3F359DN99ByJQe_YtpOiHfpyStS66_F4rXBXW2pSnoOrMVCHM/s1600/IMG-20250619-WA0030.jpg" 
+                         alt="تقديم القهوة بأسلوب عربي راقي" loading="lazy">
+                    <div class="gallery-overlay">
                         <div>
-                            <i class="fas fa-star text-4xl mb-3"></i>
+                            <i class="fas fa-star text-3xl mb-2"></i>
                             <p>تقديم القهوة بأسلوب عربي راقي</p>
                         </div>
                     </div>
@@ -497,392 +878,663 @@
         </div>
     </section>
 
-    <!-- قسم من نحن المحسن -->
-    <section class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="section-title amiri">من نحن</h2>
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="service-card rounded-3xl p-12 card-shadow">
-                        <div class="text-center mb-8">
-                            <i class="fas fa-eye text-6xl text-coffee-light mb-6"></i>
-                            <h3 class="text-4xl font-bold gradient-text mb-6 amiri">رؤيتنا</h3>
-                        </div>
-                        <p class="text-xl text-gray-700 leading-relaxed mb-8 text-center">
-                            أهلاً وسهلاً بكم في <strong class="text-coffee">قهوجي وصبابين الطائف الباحة</strong>، حيث نجمع بين التراث العربي الأصيل والحرفية المتقنة في فن إعداد وتقديم القهوة العربية.
-                        </p>
-                        <p class="text-xl text-gray-700 leading-relaxed text-center">
-                            نؤمن أن القهوة رمز للكرم والضيافة، لذلك نلتزم بتقديم خدمات عالية الجودة تعكس القيم العربية الأصيلة.
-                        </p>
+    <!-- من نحن -->
+    <section class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">من نحن</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <div class="service-card rounded-3xl p-12 card-shadow">
-                        <div class="text-center mb-8">
-                            <i class="fas fa-handshake text-6xl text-coffee-light mb-6"></i>
-                            <h3 class="text-4xl font-bold gradient-text mb-6 amiri">التزامنا</h3>
-                        </div>
-                        <p class="text-xl text-gray-700 leading-relaxed mb-8 text-center">
-                            نقدم قهوة عالية الجودة معدة بطرق فريدة، ومقدمة بأسلوب يجمع بين التراث والإبداع. سواء كان في تجمع عائلي أو مناسبة كبيرة.
-                        </p>
-                        <p class="text-xl text-gray-700 leading-relaxed text-center">
-                            رؤيتنا إحياء التراث العربي ورفع مكانة القهوة العربية كرمز للضيافة الراقية.
-                        </p>
+                    <h3 class="service-title">رؤيتنا</h3>
+                    <p class="text-lg leading-relaxed mb-4">
+                        أهلاً وسهلاً بكم في <strong>قهوجي وصبابين الطائف الباحة</strong>، حيث نجمع بين التراث العربي الأصيل والحرفية المتقنة في فن إعداد وتقديم القهوة العربية.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        نؤمن أن القهوة رمز للكرم والضيافة، لذلك نلتزم بتقديم خدمات عالية الجودة تعكس القيم العربية الأصيلة.
+                    </p>
+                </div>
+                
+                <div class="glass-card service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
+                    <h3 class="service-title">التزامنا</h3>
+                    <p class="text-lg leading-relaxed mb-4">
+                        نقدم قهوة عالية الجودة معدة بطرق فريدة، ومقدمة بأسلوب يجمع بين التراث والإبداع. سواء كان في تجمع عائلي أو مناسبة كبيرة.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        رؤيتنا إحياء التراث العربي ورفع مكانة القهوة العربية كرمز للضيافة الراقية.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الخدمات المحسن -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title amiri">خدماتنا المميزة</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="service-card rounded-3xl p-12 card-shadow hover-lift">
-                    <div class="text-center mb-10">
-                        <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-8 feature-icon">
-                            <i class="fas fa-home text-5xl"></i>
-                        </div>
-                        <h3 class="text-3xl font-bold gradient-text amiri">المناسبات العائلية</h3>
+    <!-- الخدمات -->
+    <section id="services" class="section bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">خدماتنا المميزة</h2>
+            <div class="service-grid">
+                <div class="glass-card service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
                     </div>
-                    <ul class="text-gray-700 space-y-5 text-lg">
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>تقديم القهوة العربية في حفلات الزفاف</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة ضيافة راقية للعزائم العائلية</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>تقديم الشاي بالطريقة التراثية</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة محترفة بالزي التراثي</li>
+                    <h3 class="service-title">المناسبات العائلية</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i>تقديم القهوة العربية في حفلات الزفاف</li>
+                        <li><i class="fas fa-check"></i>خدمة ضيافة راقية للعزائم العائلية</li>
+                        <li><i class="fas fa-check"></i>تقديم الشاي بالطريقة التراثية</li>
+                        <li><i class="fas fa-check"></i>خدمة محترفة بالزي التراثي</li>
                     </ul>
                 </div>
 
-                <div class="service-card rounded-3xl p-12 card-shadow hover-lift">
-                    <div class="text-center mb-10">
-                        <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-8 feature-icon">
-                            <i class="fas fa-building text-5xl"></i>
-                        </div>
-                        <h3 class="text-3xl font-bold gradient-text amiri">الشركات والمؤسسات</h3>
+                <div class="glass-card service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <ul class="text-gray-700 space-y-5 text-lg">
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة ضيافة للاجتماعات والمؤتمرات</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>تقديم القهوة في المعارض التجارية</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة يومية للمكاتب والشركات</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>تدريب الموظفين على فن التقديم</li>
+                    <h3 class="service-title">الشركات والمؤسسات</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i>خدمة ضيافة للاجتماعات والمؤتمرات</li>
+                        <li><i class="fas fa-check"></i>تقديم القهوة في المعارض التجارية</li>
+                        <li><i class="fas fa-check"></i>خدمة يومية للمكاتب والشركات</li>
+                        <li><i class="fas fa-check"></i>تدريب الموظفين على فن التقديم</li>
                     </ul>
                 </div>
 
-                <div class="service-card rounded-3xl p-12 card-shadow hover-lift">
-                    <div class="text-center mb-10">
-                        <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-8 feature-icon">
-                            <i class="fas fa-crown text-5xl"></i>
-                        </div>
-                        <h3 class="text-3xl font-bold gradient-text amiri">المناسبات الخاصة</h3>
+                <div class="glass-card service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
                     </div>
-                    <ul class="text-gray-700 space-y-5 text-lg">
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>تقديم القهوة في الفنادق والمنتجعات</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة VIP للشخصيات المهمة</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>المهرجانات والفعاليات الثقافية</li>
-                        <li class="flex items-start"><i class="fas fa-check text-coffee ml-4 mt-1 text-xl"></i>خدمة حصرية للمناسبات الملكية</li>
+                    <h3 class="service-title">المناسبات الخاصة</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i>تقديم القهوة في الفنادق والمنتجعات</li>
+                        <li><i class="fas fa-check"></i>خدمة VIP للشخصيات المهمة</li>
+                        <li><i class="fas fa-check"></i>المهرجانات والفعاليات الثقافية</li>
+                        <li><i class="fas fa-check"></i>خدمة حصرية للمناسبات الملكية</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم مميزات الخدمة المحسن -->
-    <section class="py-24">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title amiri">لماذا تختار قهوجي وصبابين الطائف الباحة؟</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16">
-                <div class="text-center feature-card">
-                    <div class="gradient-bg bg-gradient-to-r from-coffee to-coffee-light text-white w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 card-shadow feature-icon">
-                        <i class="fas fa-award text-5xl"></i>
+    <!-- المميزات -->
+    <section class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">لماذا تختار قهوجي وصبابين الطائف الباحة؟</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
                     </div>
-                    <h3 class="text-2xl font-bold gradient-text mb-6">جودة عالية</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">قهوة عربية أصيلة من أجود أنواع البن المحمص بعناية فائقة</p>
+                    <h3 class="feature-title">جودة عالية</h3>
+                    <p class="feature-text">قهوة عربية أصيلة من أجود أنواع البن المحمص بعناية فائقة</p>
                 </div>
-                <div class="text-center feature-card">
-                    <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 card-shadow feature-icon">
-                        <i class="fas fa-users text-5xl"></i>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="text-2xl font-bold gradient-text mb-6">فريق محترف</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">مدربون على أعلى معايير الضيافة العربية والخدمة المتميزة</p>
+                    <h3 class="feature-title">فريق محترف</h3>
+                    <p class="feature-text">مدربون على أعلى معايير الضيافة العربية والخدمة المتميزة</p>
                 </div>
-                <div class="text-center feature-card">
-                    <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 card-shadow feature-icon">
-                        <i class="fas fa-clock text-5xl"></i>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3 class="text-2xl font-bold gradient-text mb-6">خدمة سريعة</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">التزام صارم بالمواعيد واستجابة فورية لجميع طلباتكم</p>
+                    <h3 class="feature-title">خدمة سريعة</h3>
+                    <p class="feature-text">التزام صارم بالمواعيد واستجابة فورية لجميع طلباتكم</p>
                 </div>
-                <div class="text-center feature-card">
-                    <div class="bg-gradient-to-r from-coffee to-coffee-light text-white w-28 h-28 rounded-3xl flex items-center justify-center mx-auto mb-8 card-shadow feature-icon">
-                        <i class="fas fa-heart text-5xl"></i>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3 class="text-2xl font-bold gradient-text mb-6">ضيافة أصيلة</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">نحافظ على التراث العربي في كل التفاصيل والطقوس</p>
+                    <h3 class="feature-title">ضيافة أصيلة</h3>
+                    <p class="feature-text">نحافظ على التراث العربي في كل التفاصيل والطقوس</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم آراء العملاء المحسن -->
-    <section class="testimonials-section">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title amiri">ما يقوله عملاؤنا الكرام</h2>
-            <div class="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+    <!-- آراء العملاء -->
+    <section class="section bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title" data-aos="fade-up">ما يقوله عملاؤنا الكرام</h2>
+            <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonials-track" id="testimonialTrack">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                خدمة راقية جداً وقهوة لذيذة بطعم أصيل. أضافوا لمسة تراثية جميلة لحفل زفاف ابني. كل الضيوف أعجبوا بالخدمة المميزة والطعم الرائع.
+                            </p>
+                            <p class="testimonial-author">محمد العتيبي</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        خدمة راقية جداً وقهوة لذيذة بطعم أصيل. أضافوا لمسة تراثية جميلة لحفل زفاف ابني. كل الضيوف أعجبوا بالخدمة المميزة والطعم الرائع.
-                    </p>
-                    <p class="testimonial-author">محمد العتيبي </p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                شركتنا تتعامل معهم دائماً في المؤتمرات والفعاليات. احترافية عالية والتزام تام بالمواعيد. يعرفون كيف يقدمون ضيافة تليق بمكانة مؤسستنا.
+                            </p>
+                            <p class="testimonial-author">عبدالله الغامدي</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        شركتنا تتعامل معهم دائماً في المؤتمرات والفعاليات. احترافية عالية والتزام تام بالمواعيد. يعرفون كيف يقدمون ضيافة تليق بمكانة مؤسستنا.
-                    </p>
-                    <p class="testimonial-author">عبدالله الغامدي </p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                أفضل خدمة قهوة في المنطقة بلا منازع. الطعم أصيل والتقديم راقي جداً. طاقم العمل مرتب ونظيف وأنيق. أنصح الجميع بالتعامل معهم.
+                            </p>
+                            <p class="testimonial-author">سلطان القحطاني</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        أفضل خدمة قهوة في المنطقة بلا منازع. الطعم أصيل والتقديم راقي جداً. طاقم العمل مرتب ونظيف وأنيق. أنصح الجميع بالتعامل معهم.
-                    </p>
-                    <p class="testimonial-author">سلطان القحطاني </p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                تعاملت معهم في مؤتمر مهم وكانت الخدمة مثالية. القهوة ذات مذاق رائع وتقديم متميز. حرفية في العمل وأسلوب راقي في التعامل.
+                            </p>
+                            <p class="testimonial-author">فهد الشهراني</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        تعاملت معهم في مؤتمر مهم وكانت الخدمة مثالية. القهوة ذات مذاق رائع وتقديم متميز. حرفية في العمل وأسلوب راقي في التعامل.
-                    </p>
-                    <p class="testimonial-author">فهد الشهراني </p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                خدمة استثنائية ومميزة للغاية. يحافظون على التراث العربي الأصيل في تقديم القهوة. أسعار معقولة مقابل جودة عالية جداً.
+                            </p>
+                            <p class="testimonial-author">خالد البلوي</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        خدمة استثنائية ومميزة للغاية. يحافظون على التراث العربي الأصيل في تقديم القهوة. أسعار معقولة مقابل جودة عالية جداً.
-                    </p>
-                    <p class="testimonial-author">خالد البلوي </p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                فريق عمل محترف ومتميز. قهوة بنكهة أصيلة وخدمة على أعلى مستوى. أضافوا جواً من الأصالة والكرم لمناسبتنا العائلية.
+                            </p>
+                            <p class="testimonial-author">ناصر الحربي</p>
+                        </div>
                     </div>
-                    <p class="testimonial-text">
-                        فريق عمل محترف ومتميز. قهوة بنكهة أصيلة وخدمة على أعلى مستوى. أضافوا جواً من الأصالة والكرم لمناسبتنا العائلية.
-                    </p>
-                    <p class="testimonial-author">ناصر الحربي </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الختام والشكر المحسن -->
-    <section class="py-24">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-5xl mx-auto service-card rounded-3xl p-16 card-shadow">
-                <div class="mb-12">
-                    <i class="fas fa-coffee text-8xl gradient-text mb-8"></i>
-                    <h2 class="text-5xl font-bold gradient-text mb-10 amiri">شكراً لاختياركم قهوجي وصبابين الطائف الباحة</h2>
+    <!-- قسم الختام -->
+    <section class="section">
+        <div class="container mx-auto px-4">
+            <div class="glass-card service-card text-center" data-aos="fade-up">
+                <div class="service-icon mb-6" style="width: 100px; height: 100px; font-size: 2.5rem;">
+                    <i class="fas fa-coffee"></i>
                 </div>
-                <p class="text-2xl text-gray-700 leading-relaxed mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--coffee-primary); font-family: 'Amiri', serif;">
+                    شكراً لاختياركم قهوجي وصبابين الطائف الباحة
+                </h2>
+                <p class="text-xl leading-relaxed mb-8">
                     نحن فخورون بكوننا شركاءكم في صنع لحظات جميلة من الضيافة العربية الأصيلة. نتطلع إلى خدمتكم بكل تميز وإتقان في جميع مناسباتكم الخاصة والمهمة.
                 </p>
-                <div class="bg-gradient-to-r from-coffee to-coffee-light text-white rounded-3xl p-12 card-shadow">
-                    <i class="fas fa-quote-right text-5xl mb-6 opacity-30"></i>
-                    <p class="text-3xl font-semibold amiri leading-relaxed">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right text-4xl mb-4 opacity-30"></i>
+                    <p class="text-2xl font-semibold leading-relaxed" style="font-family: 'Amiri', serif;">
                         "في قهوجي وصبابين الطائف الباحة... نصنع من كل رشفة قهوة ذكرى لا تُنسى ولحظة من التراث الأصيل"
                     </p>
-                    <i class="fas fa-quote-left text-5xl mt-6 opacity-30"></i>
+                    <i class="fas fa-quote-left text-4xl mt-4 opacity-30"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- تذييل الصفحة المحسن -->
-    <footer class="hero-bg text-white py-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-16 text-center md:text-right">
+    <!-- التذييل -->
+    <footer id="contact" class="footer">
+        <div class="container mx-auto px-4">
+            <div class="footer-grid">
                 <div>
-                    <div class="mb-8">
-                        <i class="fas fa-coffee text-6xl text-yellow-300 mb-6"></i>
-                        <h3 class="text-4xl font-bold amiri mb-6">قهوجي وصبابين الطائف الباحة</h3>
+                    <div class="footer-logo">
+                        <i class="fas fa-coffee"></i>
+                        <h3 class="footer-title">قهوجي وصبابين الطائف الباحة</h3>
                     </div>
-                    <p class="opacity-90 text-xl leading-relaxed">فن الضيافة العربية الأصيلة منذ القدم</p>
+                    <p class="footer-subtitle">فن الضيافة العربية الأصيلة منذ القدم</p>
                 </div>
+                
                 <div>
-                    <h4 class="text-3xl font-semibold mb-8 amiri">تواصل معنا</h4>
-                    <div class="space-y-6 text-xl">
-                        <div class="flex items-center justify-center md:justify-start">
-                            <div class="bg-white bg-opacity-20 rounded-full p-3 ml-4">
+                    <h4 class="text-2xl font-semibold mb-6" style="font-family: 'Amiri', serif;">تواصل معنا</h4>
+                    <div class="space-y-4">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <i class="fas fa-phone text-green-300"></i>
                             </div>
                             <span>+966507712688</span>
                         </div>
-                        <div class="flex items-center justify-center md:justify-start">
-                            <div class="bg-white bg-opacity-20 rounded-full p-3 ml-4">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <i class="fab fa-whatsapp text-green-400"></i>
                             </div>
                             <span>واتساب: +966507712688</span>
                         </div>
-                        <div class="flex items-center justify-center md:justify-start">
-                            <div class="bg-white bg-opacity-20 rounded-full p-3 ml-4">
+                        <div class="contact-item">
+                            <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt text-red-300"></i>
                             </div>
                             <span>الباحة - الطائف - المملكة العربية السعودية</span>
                         </div>
                     </div>
                 </div>
+                
                 <div>
-                    <h4 class="text-3xl font-semibold mb-8 amiri">ساعات العمل</h4>
-                    <div class="space-y-4 opacity-90 text-xl">
-                        <div class="bg-white bg-opacity-10 rounded-2xl p-6">
-                            <p class="font-semibold mb-2">السبت - الخميس</p>
+                    <h4 class="text-2xl font-semibold mb-6" style="font-family: 'Amiri', serif;">ساعات العمل</h4>
+                    <div class="space-y-4">
+                        <div class="hours-card">
+                            <p class="hours-title">السبت - الخميس</p>
                             <p>من 8:00 صباحاً إلى 10:00 مساءً</p>
                         </div>
-                        <div class="bg-white bg-opacity-10 rounded-2xl p-6">
-                            <p class="font-semibold text-green-300">متاحون 24/7 للطوارئ</p>
+                        <div class="hours-card emergency-badge">
+                            <p class="hours-title">متاحون 24/7 للطوارئ</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white border-opacity-30 mt-16 pt-12 text-center">
-                <p class="opacity-80 text-xl">© 2024 قهوجي وصبابين الطائف الباحة - جميع الحقوق محفوظة</p>
-                <p class="opacity-60 text-lg mt-2">برمجة وتطوير: نسيم محمد +96774786786</p>
+            
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.3); margin-top: 3rem; padding-top: 2rem; text-center;">
+                <p class="opacity-80 text-lg">© 2024 قهوجي وصبابين الطائف الباحة - جميع الحقوق محفوظة</p>
+                <p class="opacity-60 mt-2">برمجة وتطوير: نسيم محمد +96774786786</p>
             </div>
         </div>
     </footer>
 
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
     <script>
-        // تحسين تفاعل الصور
-        document.querySelectorAll('.gallery-image-container').forEach(container => {
-            container.addEventListener('click', function() {
-                const img = this.querySelector('.gallery-image');
-                const overlay = document.createElement('div');
-                overlay.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0,0,0,0.9);
-                    z-index: 10000;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                `;
-                
-                const enlargedImg = document.createElement('img');
-                enlargedImg.src = img.src;
-                enlargedImg.style.cssText = `
-                    max-width: 90%;
-                    max-height: 90%;
-                    border-radius: 15px;
-                    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-                `;
-                
-                overlay.appendChild(enlargedImg);
-                document.body.appendChild(overlay);
-                
-                overlay.addEventListener('click', () => {
-                    document.body.removeChild(overlay);
-                });
-            });
+        // تهيئة AOS للحركات
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100
         });
 
-        // // تأثير التمرير السلس
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // إخفاء لودر الصفحة
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // التنقل السلس والتحديث النشط
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section[id]');
+
+        // تحديث العنصر النشط في التنقل
+        function updateActiveNav() {
+            let current = 'home';
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // استماع لأحداث التمرير
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateActiveNav);
+                ticking = true;
+                setTimeout(() => ticking = false, 16);
+            }
+        });
+
+        // التنقل السلس عند النقر
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                const targetId = item.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 20;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // تأثير الظهور التدريجي
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // سلايدر التقييمات التلقائي
+        const track = document.getElementById('testimonialTrack');
+        const slides = track.children;
+        let currentSlide = 0;
+        let autoSlideInterval;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
+        function updateSlider() {
+            const slideWidth = slides[0].offsetWidth;
+            const translateX = -currentSlide * slideWidth;
+            track.style.transform = `translateX(${translateX}px)`;
+        }
 
-        // تطبيق التأثير على العناصر
-        document.querySelectorAll('.service-card, .testimonial-card, .gallery-image-container, .feature-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            observer.observe(el);
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // بدء السلايدر التلقائي
+        startAutoSlide();
+
+        // إيقاف السلايدر عند التفاعل
+        track.addEventListener('mouseenter', stopAutoSlide);
+        track.addEventListener('mouseleave', startAutoSlide);
+        track.addEventListener('touchstart', stopAutoSlide);
+        track.addEventListener('touchend', () => {
+            setTimeout(startAutoSlide, 3000);
         });
 
-        // تحسين أداء الموقع
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
+        // تحديث السلايدر عند تغيير حجم الشاشة
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateSlider();
+            }, 250);
+        });
+
+        // تفاعل لمس للسلايدر على الجوال
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            track.style.transition = 'none';
+        });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+            const slideWidth = slides[0].offsetWidth;
+            const currentTranslate = -currentSlide * slideWidth + diff;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        });
+
+        track.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = 'transform 0.6s ease';
+            
+            const diff = currentX - startX;
+            const threshold = 50;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    currentSlide = Math.max(0, currentSlide - 1);
+                } else {
+                    currentSlide = Math.min(slides.length - 1, currentSlide + 1);
+                }
+            }
+            
+            updateSlider();
+        });
+
+        // تحسين عرض الصور في المعرض
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.95);
+                    z-index: 10000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    backdrop-filter: blur(10px);
+                `;
+                
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = img.src;
+                enlargedImg.alt = img.alt;
+                enlargedImg.style.cssText = `
+                    max-width: 95%;
+                    max-height: 95%;
+                    border-radius: 1rem;
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+                    object-fit: contain;
+                `;
+                
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                closeBtn.style.cssText = `
+                    position: absolute;
+                    top: 2rem;
+                    right: 2rem;
+                    background: rgba(255,255,255,0.2);
+                    border: none;
+                    color: white;
+                    font-size: 1.5rem;
+                    padding: 1rem;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    backdrop-filter: blur(10px);
+                    transition: all 0.3s ease;
+                `;
+                
+                closeBtn.addEventListener('mouseover', () => {
+                    closeBtn.style.background = 'rgba(255,255,255,0.3)';
+                });
+                
+                closeBtn.addEventListener('mouseout', () => {
+                    closeBtn.style.background = 'rgba(255,255,255,0.2)';
+                });
+                
+                modal.appendChild(enlargedImg);
+                modal.appendChild(closeBtn);
+                document.body.appendChild(modal);
+                
+                // إغلاق المودال
+                const closeModal = () => {
+                    modal.style.opacity = '0';
+                    setTimeout(() => {
+                        if (document.body.contains(modal)) {
+                            document.body.removeChild(modal);
+                        }
+                    }, 300);
+                };
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+                
+                closeBtn.addEventListener('click', closeModal);
+                
+                // إغلاق بمفتاح ESC
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                        document.removeEventListener('keydown', handleKeyDown);
+                    }
+                };
+                document.addEventListener('keydown', handleKeyDown);
+                
+                // تأثير الظهور
+                modal.style.opacity = '0';
+                setTimeout(() => modal.style.opacity = '1', 10);
+            });
+        });
+
+        // تحسين الأداء - تحميل الصور كسولاً
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        img.classList.remove('lazy-load');
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => {
+                img.classList.add('lazy-load');
+                imageObserver.observe(img);
+            });
+        }
+
+        // تحسين التمرير السلس لجميع الروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 20;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
 
         // تحسين تجربة اللمس للأجهزة المحمولة
         if ('ontouchstart' in window) {
-            document.querySelectorAll('.hover-lift, .testimonial-card, .gallery-image-container').forEach(el => {
+            document.querySelectorAll('.glass-card, .feature-card').forEach(el => {
                 el.addEventListener('touchstart', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                    this.style.transform = 'translateY(-4px) scale(1.01)';
                 });
                 
                 el.addEventListener('touchend', function() {
-                    this.style.transform = '';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
                 });
             });
         }
+
+        // إضافة تأثيرات المرور للعناصر
+        const addHoverEffects = () => {
+            const cards = document.querySelectorAll('.glass-card, .service-card, .feature-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.classList.add('will-change-transform', 'gpu-accelerated');
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.classList.remove('will-change-transform', 'gpu-accelerated');
+                });
+            });
+        };
+
+        // تطبيق التحسينات بعد تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            addHoverEffects();
+            updateActiveNav();
+        });
+
+        // تحسين الأداء للتمرير
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            scrollTimeout = setTimeout(() => {
+                updateActiveNav();
+            }, 10);
+        });
+
+        // منع التمرير الأفقي غير المرغوب فيه
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // تحسين عرض الفيديو إذا كان موجوداً
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+        });
     </script>
 </body>
 </html>
