@@ -1,13 +1,194 @@
-
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://qahwajialpaha.com">
-  <title>جارٍ تحويلك...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5; url=https://qahwajialpaha.com">
+    <title>جارٍ تحويلك إلى قهوجي الباحة</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 25%, #F4A460 50%, #DEB887 75%, #8B4513 100%);
+            min-height: 100vh;
+        }
+        
+        .coffee-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .steam {
+            animation: steam 2s ease-in-out infinite;
+        }
+        
+        .pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes steam {
+            0% { opacity: 0.7; transform: translateY(0px) scale(1); }
+            50% { opacity: 1; transform: translateY(-5px) scale(1.1); }
+            100% { opacity: 0.7; transform: translateY(0px) scale(1); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #8B4513, #D2691E, #F4A460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .loading-bar {
+            width: 0%;
+            animation: loading 5s linear forwards;
+        }
+        
+        @keyframes loading {
+            to { width: 100%; }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
 </head>
-<body>
-  <p>تم نقل الموقع إلى <a href="https://qahwajialpaha.com">https://qahwajialpaha.com</a></p>
+<body class="overflow-hidden">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full">
+            <!-- Main Card -->
+            <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-3xl p-8 text-center card-shadow bounce-in">
+                
+                <!-- Coffee Icon with Steam -->
+                <div class="relative mb-6">
+                    <div class="text-8xl coffee-animation">
+                        <i class="fas fa-coffee text-amber-700"></i>
+                    </div>
+                    <div class="absolute -top-2 right-1/2 transform translate-x-1/2">
+                        <div class="steam text-gray-400 text-lg">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-3xl font-bold gradient-text mb-4">
+                    مرحباً بك في قهوجي الباحة
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-gray-700 text-lg mb-2 font-medium">
+                    قهوجي وصبابين الطائف والباحة
+                </p>
+                
+                <p class="text-gray-600 mb-6">
+                    <i class="fas fa-map-marker-alt text-amber-600 ml-2"></i>
+                    خدماتنا متاحة في الطائف والباحة
+                </p>
+                
+                <!-- Services Icons -->
+                <div class="flex justify-center space-x-6 mb-6">
+                    <div class="text-center">
+                        <i class="fas fa-coffee text-3xl text-amber-600 coffee-animation mb-2"></i>
+                        <p class="text-sm text-gray-600">قهوة مميزة</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-users text-3xl text-amber-600 pulse-slow mb-2"></i>
+                        <p class="text-sm text-gray-600">صبابين محترفين</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-star text-3xl text-amber-600 coffee-animation mb-2"></i>
+                        <p class="text-sm text-gray-600">خدمة راقية</p>
+                    </div>
+                </div>
+                
+                <!-- Redirect Message -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+                    <p class="text-amber-800 font-medium mb-2">
+                        <i class="fas fa-arrow-right text-amber-600 ml-2"></i>
+                        جارٍ تحويلك إلى موقعنا الجديد
+                    </p>
+                    
+                    <!-- Loading Bar -->
+                    <div class="w-full bg-amber-200 rounded-full h-2 mb-3">
+                        <div class="bg-amber-600 h-2 rounded-full loading-bar"></div>
+                    </div>
+                    
+                    <p class="text-amber-700 text-sm">
+                        سيتم التحويل خلال 5 ثوانٍ...
+                    </p>
+                </div>
+                
+                <!-- Manual Link -->
+                <a href="https://qahwajialpaha.com" 
+                   class="inline-block bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-bold py-3 px-8 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <i class="fas fa-external-link-alt ml-2"></i>
+                    انتقل الآن إلى الموقع
+                </a>
+                
+                <!-- Footer -->
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <p class="text-gray-500 text-sm">
+                        <i class="fas fa-phone text-amber-600 ml-1"></i>
+                        للحجز والاستفسار - خدمة 24/7
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bottom Icons -->
+            <div class="flex justify-center mt-6 space-x-4">
+                <div class="text-white text-4xl coffee-animation">
+                    <i class="fas fa-coffee-togo"></i>
+                </div>
+                <div class="text-white text-4xl pulse-slow">
+                    <i class="fas fa-mug-hot"></i>
+                </div>
+                <div class="text-white text-4xl coffee-animation">
+                    <i class="fas fa-coffee"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto redirect after 5 seconds
+        setTimeout(function() {
+            window.location.href = 'https://qahwajialpaha.com';
+        }, 5000);
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to icons
+            const icons = document.querySelectorAll('i');
+            icons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.2)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
